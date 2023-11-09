@@ -1,8 +1,13 @@
-# BlazorChat
+# Énoncé
 
-![screenshot](https://raw.githubusercontent.com/mizrael/BlazorChat/master/screenshot.JPG)
+Ceci est un serveur chat très basique que vous devrez modifier pour qu'il utilise un service Kafka au lieu de stocker tout dans sa mémoire interne.
 
-BlazorChat is a simple chat application written with Blazor and .NET Core 3.1. 
-The sample code shows how to login users into a single chatroom and keep track of their online status.
+Ensuite, il faudra mettre votre serveur dans un conteneur Docker et pouvoir faire rouler votre application dans ce conteneur.
 
-Messages and Users are stored in-memory on the server.
+Enfin, vous devrez configurer votre cluster à l'aide de Kubernetes et faire une démo avec votre enseignant du tout qui marche.
+
+# Pondération
+
+- Votre serveur utilise un service Kafka pour les messages (50%)
+- Votre serveur roule dans un conteneur Docker (10%)
+- Votre grappe de serveur Kubenetes fonctionne correctement (40%)
