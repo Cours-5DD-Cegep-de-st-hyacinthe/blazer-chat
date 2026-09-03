@@ -1,0 +1,50 @@
+# First, add the API
+apiVersion: apps/v1
+# This will be the deployment setup
+kind: Deployment
+metadata:
+  # Name your Deployment here
+  name: blazor-app-kube-deployment
+spec:
+  # The number of pods/replicas to run
+  replicas: 1
+  selector:
+    matchLabels:
+    # selector to match the pod
+      app: blazor-app-kube-pod
+  template:
+    metadata:
+      labels:
+      # label your pod
+        app: blazor-app-kube-pod
+    spec:
+      containers:
+      # Add the container name for Kubernetes
+      - name: blazor-super-app
+      # Add the local image name
+        image: blazorchat
+        # never pull the image policy
+        imagePullPolicy: Never
+        ports:
+        # port for running the container, le port sur lequel l'application du conteneur roule
+        - containerPort: 80
+---
+# First, add the Service API
+apiVersion: v1
+# This will be the Service setup
+kind: Service
+metadata:
+  # Your service name
+  name: blazor-app-service
+spec:
+  selector:
+    # selector that matches the pod
+    app: blazor-app-kube-pod
+  # type of service
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    # port for exposing the service
+    port: 5000
+    # portfor exposing the pod
+    targetPort: 80
